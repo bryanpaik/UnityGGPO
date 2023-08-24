@@ -50,7 +50,6 @@ PLUGINEX(int) UggPluginBuildNumber()
 PLUGINEX(void) UggSetLogDelegate(LogDelegate callback)
 {
     uggLogCallback = callback;
-    ggpo_set_logger(callback);
 }
 
 void TestOnEventDelegate(OnEventDelegate realOnEventCallback)
