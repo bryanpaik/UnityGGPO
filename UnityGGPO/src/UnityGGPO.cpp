@@ -52,6 +52,11 @@ PLUGINEX(void) UggSetLogDelegate(LogDelegate callback)
     uggLogCallback = callback;
 }
 
+PLUGINEX(void) UggSetCrashDelegate(CrashDelegate callback)
+{
+    ggpo_init_crashdelegate(callback);
+}
+
 void TestOnEventDelegate(OnEventDelegate realOnEventCallback)
 {
     UggCallLogv(LOG_INFO, "UggTestOnEventDelegate");
@@ -184,6 +189,7 @@ PLUGINEX(int) UggStartSpectating(GGPOPtr& sessionRef,
 
     GGPOSession* ggpo;
     auto ret = ggpo_start_spectating(&ggpo, &cb, game, num_players, sizeof(uint64_t), localport, host_ip, host_port);
+    sessionRef = (GGPOPtr)ggpo;
     return ret;
 }
 
