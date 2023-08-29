@@ -5,6 +5,7 @@ extern "C" {
 #define PLUGINEX(rtype) UNITY_INTERFACE_EXPORT rtype UNITY_INTERFACE_API
 
 	typedef void (*LogDelegate)(const char* text);
+	typedef void (*CrashDelegate)();
 	typedef bool (*BeginGameDelegate)(const char* text);
 	typedef bool (*AdvanceFrameDelegate)(int flags);
 	typedef bool (*LoadGameStateDelegate)(unsigned char* buffer, int length);
@@ -26,6 +27,7 @@ extern "C" {
 		OnEventDelegate onEvent,
 		const char* game, int num_players, int localport);
 	PLUGINEX(void) UggSetLogDelegate(LogDelegate callback);
+	PLUGINEX(void) UggSetCrashDelegate(CrashDelegate callback);
 	PLUGINEX(int) UggStartSession(GGPOPtr& sessionRef,
 		BeginGameDelegate beginGame,
 		AdvanceFrameDelegate advanceFrame,

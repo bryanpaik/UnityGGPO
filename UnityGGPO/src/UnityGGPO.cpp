@@ -52,6 +52,11 @@ PLUGINEX(void) UggSetLogDelegate(LogDelegate callback)
     uggLogCallback = callback;
 }
 
+PLUGINEX(void) UggSetCrashDelegate(CrashDelegate callback)
+{
+    ggpo_init_crashdelegate(callback);
+}
+
 void TestOnEventDelegate(OnEventDelegate realOnEventCallback)
 {
     UggCallLogv(LOG_INFO, "UggTestOnEventDelegate");
